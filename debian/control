@@ -1,0 +1,72 @@
+Source: configobj
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders:
+ Stefano Rivera <stefanor@debian.org>,
+ Jelmer Vernooij <jelmer@debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3-all,
+ python3-pytest,
+ python3-setuptools,
+ python3-sphinx,
+ python3-six
+Standards-Version: 4.6.0
+Homepage: http://www.voidspace.org.uk/python/configobj.html
+Vcs-Git: https://salsa.debian.org/python-team/packages/configobj.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/configobj
+Rules-Requires-Root: no
+
+Package: python-configobj-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}
+Multi-Arch: foreign
+Description: simple but powerful config file reader and writer (documentation)
+ ConfigObj is a simple but powerful config file reader and writer: an
+ ini file round tripper. Its main feature is that it is very easy to
+ use, with a straightforward programmer's interface and a simple
+ syntax for config files. It has lots of other features, though:
+ .
+  * Nested sections (subsections), to any level
+  * List values
+  * Multiple line values
+  * String interpolation (substitution)
+  * Integrated with a powerful validation system
+    + including automatic type checking/conversion
+    + and allowing default values
+    + repeated sections
+  * All comments in the file are preserved
+  * The order of keys/sections is preserved
+  * Full Unicode support
+  * Powerful unrepr mode for storing/retrieving Python data-types
+ .
+ This package includes the documentation in HTML format.
+
+Package: python3-configobj
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${python3:Depends}
+Suggests: python-configobj-doc
+Description: simple but powerful config file reader and writer for Python 3
+ ConfigObj is a simple but powerful config file reader and writer: an
+ ini file round tripper. Its main feature is that it is very easy to
+ use, with a straightforward programmer's interface and a simple
+ syntax for config files. It has lots of other features, though:
+ .
+  * Nested sections (subsections), to any level
+  * List values
+  * Multiple line values
+  * String interpolation (substitution)
+  * Integrated with a powerful validation system
+    + including automatic type checking/conversion
+    + and allowing default values
+    + repeated sections
+  * All comments in the file are preserved
+  * The order of keys/sections is preserved
+  * Full Unicode support
+  * Powerful unrepr mode for storing/retrieving Python data-types
+ .
+  This is the Python 3 version of the package.

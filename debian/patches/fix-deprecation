@@ -1,0 +1,49 @@
+From: Benjamin Drung <benjamin.drung@profitbricks.com>
+Date: Thu, 8 Oct 2015 08:44:25 -0700
+Subject: Fix deprecation warning test case.
+
+The stacklevel parameter of the warnings.warn function is only required
+when wrapper functions are used (to hide the wrapper functions).
+
+The test case needs to be modified to print deprecation warnings (instead
+of just ignoring them).
+
+Forwarded: https://github.com/DiffSK/configobj/pull/69
+---
+ configobj.py            | 2 +-
+ tests/test_configobj.py | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configobj.py b/configobj.py
+index ba886e8..7c972a4 100644
+--- a/configobj.py
++++ b/configobj.py
+@@ -1205,7 +1205,7 @@ class ConfigObj(Section):
+             import warnings
+             warnings.warn('Passing in an options dictionary to ConfigObj() is '
+                           'deprecated. Use **options instead.',
+-                          DeprecationWarning, stacklevel=2)
++                          DeprecationWarning)
+             
+             # TODO: check the values too.
+             for entry in options:
+diff --git a/tests/test_configobj.py b/tests/test_configobj.py
+index 473992b..934d1bf 100644
+--- a/tests/test_configobj.py
++++ b/tests/test_configobj.py
+@@ -2,6 +2,7 @@
+ from __future__ import unicode_literals
+ import os
+ import re
++import warnings
+ 
+ from codecs import BOM_UTF8
+ from warnings import catch_warnings
+@@ -107,6 +108,7 @@ def test_order_preserved():
+ 
+ 
+ def test_options_deprecation():
++    warnings.simplefilter('always', DeprecationWarning)
+     with catch_warnings(record=True) as log:
+         ConfigObj(options={})
+ 
