@@ -1,3 +1,13 @@
+configobj (5.0.6-5ubuntu0.1) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: ReDoS
+    - debian/patches/CVE-2023-26112.patch: updates regex that can cause
+      catastrophic backtracking when a match fails in validate.py and adds a
+      test in tests/test_validate_errors.py.
+    - CVE-2023-26112
+
+ -- Ian Constantin <ian.constantin@canonical.com>  Fri, 20 Sep 2024 14:44:09 +0300
+
 configobj (5.0.6-5) unstable; urgency=medium
 
   [ Debian Janitor ]
